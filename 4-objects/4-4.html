@@ -1,10 +1,12 @@
 <script>
 
 /*
+    Использование "this" в литерале объекта
     Задача 1 не требует написания кода
 */
 
 /*
+    Создайте калькулятор
     Задача 2
 */
 
@@ -28,6 +30,7 @@ alert( calculator.sum() );
 alert( calculator.mul() );
 
 /*
+    Цепь вызовов
     Задача 3
 */
 
@@ -41,7 +44,7 @@ let ladder = {
     this.step--;
     return this;
   },
-  showStep: function() { // показывает текущую ступеньку
+  showStep: function() {
     alert( this.step );
     return this;
   }

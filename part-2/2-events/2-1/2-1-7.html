@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            .arrow {
+                padding: 0;
+                background: #ddd;
+                border-radius: 15px;
+                border: 1px solid gray;
+                font-size: 24px;
+                line-height: 24px;
+                color: #444;
+                display: block;
+            }
+
+            .arrow:focus {
+                outline: none;
+            }
+
+            .arrow:hover {
+                background: #ccc;
+                cursor: pointer;
+            }
+
+            ul {
+                height: 130px;
+                width: 9999px;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                font-size: 0;
+            }
+
+            ul img {
+                width: 130px;
+                height: 130px;
+                display: block; /* убираем пустое место вокруг картинок */
+            }
+
+            ul li {
+                display: inline-block; /* убираем пустое место между элементами списка */
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="carousel" class="carousel">
+            <button class="arrow prev">⇦</button>
+            <div class="gallery">
+                <ul>
+                    <li><img src="https://ru.js.cx/carousel/1.png" /></li>
+                    <li><img src="https://ru.js.cx/carousel/2.png" /></li>
+                    <li><img src="https://ru.js.cx/carousel/3.png" /></li>
+                    <li><img src="https://ru.js.cx/carousel/4.png" /></li>
+                    <li><img src="https://ru.js.cx/carousel/5.png" /></li>
+                    <li><img src="https://ru.js.cx/carousel/6.png" /></li>
+                    <li><img src="https://ru.js.cx/carousel/7.png" /></li>
+                    <li><img src="https://ru.js.cx/carousel/8.png" /></li>
+                    <li><img src="https://ru.js.cx/carousel/9.png" /></li>
+                    <li><img src="https://ru.js.cx/carousel/10.png" /></li>
+                </ul>
+            </div>
+            <button class="arrow next">⇨</button>
+        </div>
+
+        <script>
+            /*
+                Карусель
+                Задача 7
+            */
+
+            class Carousel {
+                constructor(selector, config) {
+                    this.config = config;
+                    this.carousel = document.querySelector(selector);
+                    this.prevElement = document.querySelector(config.prevSelector);
+                    this.nextElement = document.querySelector(config.nextSelector);
+                    this.list = document.querySelector(config.listSelector);
+                    this.listElems = document.querySelectorAll(config.listElemsSelector);
+                    this.position = 0;
+
+                    this.init(selector);
+
+                    this.prevElement.onclick = () => this.prev();
+                    this.nextElement.onclick = () => this.next();
+                }
+
+                init() {
+                    this.carousel.style.width = this.config.count * this.config.width + "px";
+                    this.carousel.style.position = "relative";
+                    this.carousel.style.overflow = "hidden";
+                    this.list.style.transition = "0.3s";
+
+                    this.prevElement.style.position = this.nextElement.style.position = "absolute";
+                    this.prevElement.style.left = 0;
+                    this.nextElement.style.right = 0;
+                    this.prevElement.style.top =
+                        this.carousel.clientHeight / 2 - this.prevElement.clientHeight / 2 + "px";
+                    this.nextElement.style.top =
+                        this.carousel.clientHeight / 2 - this.nextElement.clientHeight / 2 + "px";
+                }
+
+                prev() {
+                    this.position += this.config.width * this.config.count;
+                    this.position = Math.min(this.position, 0);
+                    this.list.style.marginLeft = this.position + "px";
+                }
+
+                next() {
+                    this.position -= this.config.width * this.config.count;
+                    this.position = Math.max(
+                        this.position,
+                        -this.config.width * (this.listElems.length - this.config.count)
+                    );
+                    this.list.style.marginLeft = this.position + "px";
+                }
+            }
+
+            const carousel = new Carousel(".carousel", {
+                prevSelector: ".prev",
+                nextSelector: ".next",
+                listSelector: "ul",
+                listElemsSelector: "li",
+
+                count: 3,
+                width: 130,
+            });
+        </script>
+    </body>
+</html>

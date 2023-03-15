@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .tree span:hover {
+                font-weight: bold;
+            }
+
+            .tree span {
+                cursor: pointer;
+            }
+        </style>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <ul class="tree" id="tree">
+            <li>
+                Животные
+                <ul>
+                    <li>
+                        <span>Млекопитающие</span>
+                        <ul>
+                            <li><span>Коровы</span></li>
+                            <li><span>Ослы</span></li>
+                            <li><span>Собаки</span></li>
+                            <li><span>Тигры</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Другие</span>
+                        <ul>
+                            <li><span>Змеи</span></li>
+                            <li><span>Птицы</span></li>
+                            <li><span>Ящерицы</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span>Рыбы</span>
+                <ul>
+                    <li>
+                        <span>Аквариумные</span>
+                        <ul>
+                            <li><span>Гуппи</span></li>
+                            <li><span>Скалярии</span></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Морские</span>
+                        <ul>
+                            <li><span>Морская форель</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <script>
+            /*
+                Раскрывающееся дерево
+                Задача 2
+            */
+
+            tree.onclick = function (event) {
+                if (event.target.closest("span")) {
+                    const el = event.target.closest("span").parentNode.querySelector("ul");
+                    if (!el) return;
+                    el.hidden = !el.hidden;
+                }
+            };
+        </script>
+    </body>
+</html>

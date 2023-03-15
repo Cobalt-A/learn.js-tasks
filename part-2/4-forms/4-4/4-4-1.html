@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            #prompt-form {
+                display: inline-block;
+                padding: 5px 5px 5px 70px;
+                width: 200px;
+                border: 1px solid black;
+                background: white url(https://en.js.cx/clipart/prompt.png) no-repeat left 5px;
+                vertical-align: middle;
+            }
+
+            #prompt-form-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+                display: none;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+            }
+
+            #prompt-form-container:before {
+                display: inline-block;
+                height: 100%;
+                content: "";
+                vertical-align: middle;
+            }
+
+            .cover-div {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9000;
+                width: 100%;
+                height: 100%;
+                background-color: gray;
+                opacity: 0.3;
+            }
+
+            #prompt-form input[name="text"] {
+                display: block;
+                margin: 5px;
+                width: 180px;
+            }
+        </style>
+    </head>
+
+    <body style="height: 3000px">
+        <h2>Кликните на кнопку ниже</h2>
+
+        <input type="button" value="Кликните, чтобы увидеть форму" id="show-button" />
+
+        <div id="prompt-form-container">
+            <form id="prompt-form">
+                <div id="prompt-message"></div>
+                <input name="text" type="text" />
+                <input type="submit" value="Ok" />
+                <input type="button" name="cancel" value="Отмена" />
+            </form>
+        </div>
+
+        <script>
+            /*
+                Модальное диалоговое окно с формой
+                Задача 1
+            */
+
+            document.addEventListener("click", (event) => {
+                if (event.target.closest("#show-button")) {
+                    showPrompt("Введите что-нибудь<br>...умное :)", function (value) {
+                        alert(value);
+                    });
+                    return;
+                }
+            });
+
+            function showPrompt(html, callback) {
+                const bg = document.createElement("div");
+                const prompt = document.querySelector("#prompt-form-container");
+                const promptMessage = document.querySelector("#prompt-message");
+                bg.classList.add("cover-div");
+                document.body.prepend(bg);
+                promptMessage.innerHTML = html;
+                prompt.style.display = "block";
+
+                document.querySelector('#prompt-form-container input[type="submit"]').addEventListener("click", (e) => {
+                    const value = document.querySelector('input[type="text"]').value;
+                    callback(value);
+                    bg.remove();
+                    prompt.style.display = "none";
+                });
+
+                document.querySelector('#prompt-form-container input[type="button"]').addEventListener("click", (e) => {
+                    bg.remove();
+                    prompt.style.display = "none";
+                });
+            }
+        </script>
+    </body>
+</html>

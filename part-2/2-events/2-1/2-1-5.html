@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            .menu::before {
+                content: "▶";
+            }
+            .menu + ul {
+                display: none;
+            }
+            .menu-active::before {
+                content: "▼";
+            }
+            .menu-active + ul {
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <a class="menu">Сладости (нажми меня)!</a>
+        <ul>
+            <li>Пирожное</li>
+            <li>Пончик</li>
+            <li>Мёд</li>
+        </ul>
+
+        <script>
+            /*
+                Создать раскрывающееся меню
+                Задача 5
+            */
+
+            let menu = document.querySelector(".menu");
+
+            menu.onclick = function () {
+                this.classList.toggle("menu-active");
+            };
+        </script>
+    </body>
+</html>

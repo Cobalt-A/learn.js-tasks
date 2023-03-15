@@ -1,0 +1,40 @@
+<script>
+    /*
+        Сделать первый символ заглавным
+        Задача 1
+    */
+
+    function ucFirst(str) {
+        if (!str || typeof str !== "string") return str;
+        return str[0].toUpperCase() + str.slice(1);
+    }
+
+    /*
+        Проверка на спам
+        Задача 2
+    */
+
+    function checkSpam(str) {
+        let lowerStr = str.toLowerCase();
+
+        return lowerStr.includes("viagra") || lowerStr.includes("xxx");
+    }
+
+    /*
+        Усечение строки
+        Задача 3
+    */
+
+    function truncate(str, maxlength) {
+        return str.length > maxlength ? str.slice(0, maxlength - 1) + "…" : str;
+    }
+
+    /*
+        Выделить число
+        Задача 4
+    */
+
+    function extractCurrencyValue(str) {
+        return Number(str.slice(1));
+    }
+</script>

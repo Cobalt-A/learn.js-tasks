@@ -1,0 +1,74 @@
+<head>
+    <meta charset="utf-8" />
+</head>
+<script>
+"use strict";
+/*
+    Связанная функция как метод
+    Задача 1
+*/
+
+// выведится передоваемый контекст, тоесть null
+
+/*
+    Повторный bind
+    Задача 2
+*/
+
+// выведится первый присвоеный контекст, второй уже не будет привязываться к функции
+
+/*
+    Свойство функции после bind
+    Задача 3
+*/
+
+// в переменую bound передается сам обьект функции, без других заданых внешних свойств
+
+/*
+    Исправьте функцию, теряющую "this"
+    Задача 4
+*/
+
+function askPassword(ok, fail) {
+  let password = prompt("Password?", '');
+  if (password == "rockstar") ok();
+  else fail();
+}
+
+let user = {
+  name: 'Вася',
+
+  loginOk() {
+    alert(`${this.name} logged in`);
+  },
+
+  loginFail() {
+    alert(`${this.name} failed to log in`);
+  },
+
+};
+
+askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
+
+/*
+    Использование частично применённой функции для логина
+    Задача 4
+*/
+
+function askPassword1(ok, fail) {
+    let password = prompt("Password?", '');
+    if (password == "rockstar") ok();
+    else fail();
+}
+
+let user1 = {
+    name: 'John',
+
+    login(result) {
+        alert( this.name + (result ? ' logged in' : ' failed to log in') );
+    }
+};
+
+askPassword1(() => user1.login(true), () => user1.login(false)); // ?
+
+</script>

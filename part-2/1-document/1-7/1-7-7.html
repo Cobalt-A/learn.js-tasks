@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="calendar"></div>
+    <script>
+        /*
+            Создайте календарь в виде таблицы
+            Задача 7
+        */
+
+        function createCalendar(elem, year, month) {
+            let mon = month - 1;
+            let date = new Date(year, mon);
+            let row = document.createElement("tr");
+            let table = document.createElement("table");
+            let content = document.createElement("tbody");
+            content.innerHTML = `
+                <tr>
+                    <th>пн</th>
+                    <th>вт</th>
+                    <th>ср</th>
+                    <th>чт</th>
+                    <th>пт</th>
+                    <th>сб</th>
+                    <th>вс</th>
+                </tr>
+            `;
+
+            while (getDay(date) !== row.querySelectorAll("td").length) {
+                // ставит указатель под нужный день нидели
+                row.innerHTML += `<td></td>`;
+            }
+
+            while (date.getMonth() == mon) {
+                row.innerHTML += `<td>${date.getDate()}</td>`;
+
+                if (getDay(date) == 6) {
+                    // для новой нидели новый row
+                    content.append(row);
+                    row = document.createElement("tr");
+                }
+
+                date.setDate(date.getDate() + 1);
+            }
+
+            table.append(content);
+            calendar.append(table);
+        }
+
+        function getDay(date) {
+            let day = date.getDay();
+            if (day == 0) day = 7;
+            return day - 1;
+        }
+
+        createCalendar(calendar, 2012, 9);
+    </script>
+</body>
+</html>

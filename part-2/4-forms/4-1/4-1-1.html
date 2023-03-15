@@ -1,0 +1,25 @@
+<select id="genres">
+    <option value="rock">Рок</option>
+    <option value="blues" selected>Блюз</option>
+</select>
+
+<script>
+    /*
+        Добавьте пункт к выпадающему списку
+        Задача 1
+    */
+
+    // 1)
+    genres.oninput = function (e) {
+        const selectedOption = genres.options[genres.selectedIndex];
+        console.log(selectedOption.value);
+        console.log(selectedOption.text);
+    };
+
+    // 2)
+    const newOption = new Option("Классика", "classic");
+    genres.append(newOption);
+
+    // 3)
+    newOption.selected = true;
+</script>

@@ -1,0 +1,67 @@
+<script>
+    /*
+        Привет, object
+        Задача 1
+    */
+
+    const user = {};
+
+    user.name = "John";
+    user.surname = "Smith";
+    user.name = "Pete";
+
+    delete user.name;
+
+    /*
+        Проверка на пустоту
+        Задача 2
+    */
+
+    function isEmpty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+
+    let schedule = {};
+
+    console.log(isEmpty(schedule)); // true
+
+    schedule["8:30"] = "get up";
+
+    console.log(isEmpty(schedule)); // false
+
+    /*
+        Объекты-константы?
+        Задача 3 не требует написания кода
+    */
+
+    /*
+        Сумма свойств объекта
+        Задача 4
+    */
+
+    let salaries = {
+        John: 100,
+        Ann: 160,
+        Pete: 130,
+    };
+
+    let sum = 0;
+    for (let key in salaries) {
+        sum += salaries[key];
+    }
+
+    console.log(sum); // 390
+
+    /*
+        Умножаем все числовые свойства на 2
+        Задача 5
+    */
+
+    function multiplyNumeric(obj) {
+        for (let key in obj) {
+            if (typeof obj[key] == "number") {
+                obj[key] *= 2;
+            }
+        }
+    }
+</script>

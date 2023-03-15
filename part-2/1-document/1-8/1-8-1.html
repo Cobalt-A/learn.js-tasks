@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            /*
+                Создать уведомление
+                Задача 1
+            */
+
+            function showNotification(obj) {
+                const element = document.createElement("div");
+                element.style.position = "absolute";
+                element.style.top = obj.top + "px";
+                element.style.right = obj.top + "px";
+                element.innerHTML = obj.html;
+                element.classList.add(obj.className);
+                document.body.append(element);
+                setTimeout(() => element.remove(), 1500);
+            }
+
+            showNotification({
+                top: 10,
+                right: 10,
+                html: "Hello!",
+                className: "welcome",
+            });
+        </script>
+    </body>
+</html>

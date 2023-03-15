@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            #contents {
+                padding: 5px;
+                border: 1px green solid;
+            }
+        </style>
+    </head>
+
+    <body>
+        <fieldset id="contents">
+            <legend>#contents</legend>
+            <p>
+                Как насчёт того, чтобы прочитать <a href="https://wikipedia.org">Википедию</a> или посетить
+                <a href="https://w3.org"><i>W3.org</i></a> и узнать о современных стандартах?
+            </p>
+        </fieldset>
+
+        <script>
+            /*
+                Поймайте переход по ссылке
+                Задача 2
+            */
+
+            contents.onclick = function (event) {
+                if (event.target.closest("a[href]")) {
+                    return handleLink(event.target.closest("a[href]").getAttribute("href"));
+                }
+            };
+
+            function handleLink(href) {
+                let isLeaving = confirm(`Leave for ${href}?`);
+                if (!isLeaving) return false;
+            }
+        </script>
+    </body>
+</html>

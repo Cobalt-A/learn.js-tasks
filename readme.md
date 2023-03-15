@@ -1,17 +1,20 @@
-Этот репозиторий содержит решения задач из учебника https://learn.javascript.ru
+<h3>Этот репозиторий содержит решения задач из учебника <a href="https://learn.javascript.ru">learn.javascript.ru</a></h3>
 
-Каждая папка соответствует главе
+<hr>
 
-Каждый файл в папке соответствует подглаве
+<p>
+    Структура решений:
+</p>
 
-Файлы содержат в себе решения задач, для каждого решения задачи есть коментарий над решением, в котором написано название этой задачи и ее номер для этой подглавы
+<p>
+    <strong>Часть учебника</strong> -> <strong>Глава учебника</strong> -> <strong>Тема главы</strong> -> <strong>файлы с решениемя задач</strong>
+</p>
 
-
-
-This repository contains solutions for tasks from https://learn.javascript.ru
-
-directory matches chapters
-
-files matches subchapter
-
-The files contain solutions, for each solution there is a comment above the solution, which contains the name of this task and its number for this subchapter
+<ol>
+    <li><strong>Часть 1</strong> - Язык JavaScript - обозначено файлом <strong>part-1</strong></li>
+    <li><strong>Часть 2</strong> - Браузер: документ, события, интерфейсы - обозначено файлом <strong>part-2</strong></li>
+    <li><strong>Часть 3</strong> - Тематические разделы - обозначено файлом <strong>part-3</strong></li>
+    <li>Все <strong>Главы учебника</strong> имеют цифру обозначающий номер этой главы</li>
+    <li>Все <strong>файлы с решениемя задач</strong> имеют цифру обозначающий номер этой задачи или комментарий в коде</li>
+    <li>Некоторых решений задач может не быть, т.к. не все задачи из учебника требуют написания кода</li>
+</ol>

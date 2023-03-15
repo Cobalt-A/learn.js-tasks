@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            #field {
+                width: 200px;
+                height: 150px;
+                border: 10px solid black;
+                background-color: #00ff00;
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+            }
+
+            #ball {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 40px;
+                height: 40px;
+                transition: all 1s;
+            }
+        </style>
+    </head>
+
+    <body style="height: 2000px">
+        Нажмите на поле для перемещения мяча.
+        <br />
+
+        <div id="field">
+            <img src="https://ru.js.cx/clipart/ball.svg" id="ball" /> . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+        </div>
+
+        <script>
+            /*
+                Передвиньте мяч по полю
+                Задача 4
+            */
+
+            field.onclick = function (event) {
+                let fieldCoords = this.getBoundingClientRect();
+
+                let top = event.clientY - fieldCoords.top - field.clientTop - ball.clientHeight / 2;
+                let left = event.clientX - fieldCoords.left - field.clientLeft - ball.clientWidth / 2;
+
+                // запрещаем пересекать верхнюю границу поля
+                if (top < 0) top = 0;
+
+                // запрещаем пересекать левую границу поля
+                if (left < 0) left = 0;
+
+                // запрещаем пересекать правую границу поля
+                if (left + ball.clientWidth > field.clientWidth) {
+                    left = field.clientWidth - ball.clientWidth;
+                }
+
+                // запрещаем пересекать нижнюю границу поля
+                if (top + ball.clientHeight > field.clientHeight) {
+                    top = field.clientHeight - ball.clientHeight;
+                }
+
+                ball.style.left = left + "px";
+                ball.style.top = top + "px";
+            };
+        </script>
+    </body>
+</html>

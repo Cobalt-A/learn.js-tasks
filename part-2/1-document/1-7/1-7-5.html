@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<div id="container"></div>
+<script>
+
+/*
+    Создайте дерево из объекта
+    Задача 5
+*/
+
+let data = {
+    "Рыбы": {
+        "форель": {},
+        "лосось": {}
+    },
+
+    "Деревья": {
+        "Огромные": {
+            "секвойя": {},
+            "дуб": {}
+        },
+        "Цветковые": {
+            "яблоня": {},
+            "магнолия": {}
+        }
+    }
+};
+
+function createTreeDom(obj) {
+    if (!Object.keys(obj).length) return;
+    const ul = document.createElement('ul');
+
+    for (let key in obj) {
+        const li = document.createElement('li');
+        li.innerHTML = key;
+
+        const childrenUl = createTreeDom(obj[key]);
+        if (childrenUl) li.append(childrenUl);
+
+        ul.append(li);
+    }
+
+    return ul;
+}
+
+let container = document.getElementById('container');
+container.append(createTreeDom(data));
+
+</script>
+</body>
+</html>

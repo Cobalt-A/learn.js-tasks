@@ -7,7 +7,7 @@
 </p>
 
 <p>
-    <strong>Часть учебника</strong> -> <strong>Глава учебника</strong> -> <strong>Тема главы</strong> -> <strong>файлы с решениемя задач</strong>
+    <strong>Часть учебника</strong> -> <strong>Глава учебника</strong> -> <strong>Тема главы</strong> -> <strong>файлы с решениями задач</strong>
 </p>
 
 <ol>
